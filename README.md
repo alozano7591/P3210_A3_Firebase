@@ -4,7 +4,7 @@ Assignment 3 for Mobile Apps class
 # Contributors
 
 - Alfredo Lozano : alozano7591@conestogac.on.ca
-- Jamie Upton : jupton7804@conestogac.on.ca
+- Jamie Upton : jupton7804@conestogac.on.ca / xxdoodledoo@gmail.com
 
 # Key points to remember for future when looking back at this project:
 Adding these for myself because I have a terrible memory and will forget these eventually
