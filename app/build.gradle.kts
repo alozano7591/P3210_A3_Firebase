@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.p3210_a3"
+    namespace = "com.mobile2.p3210_a3"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.p3210_a2"
+        applicationId = "com.mobile2.p3210_a2"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -37,6 +37,13 @@ android {
 }
 
 dependencies {
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+
+    // Add the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-auth")
 
    // implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation(libs.okhttp)

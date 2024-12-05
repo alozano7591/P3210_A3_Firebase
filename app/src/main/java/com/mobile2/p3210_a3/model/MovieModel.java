@@ -1,4 +1,4 @@
-package com.example.p3210_a3.model;
+package com.mobile2.p3210_a3.model;
 
 public class MovieModel {
     String imdbID;

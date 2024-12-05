@@ -1,4 +1,4 @@
-package com.example.p3210_a3.view;
+package com.mobile2.p3210_a3.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.p3210_a3.ItemClickListener;
-import com.example.p3210_a3.viewmodel.MyAdapter;
-import com.example.p3210_a3.databinding.ActivityMainBinding;
-import com.example.p3210_a3.model.MovieModel;
-import com.example.p3210_a3.viewmodel.SearchViewModel;
+import com.mobile2.p3210_a3.ItemClickListener;
+import com.mobile2.p3210_a3.viewmodel.MyAdapter;
+import com.mobile2.p3210_a3.databinding.ActivityMainBinding;
+import com.mobile2.p3210_a3.model.MovieModel;
+import com.mobile2.p3210_a3.viewmodel.SearchViewModel;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.p3210_a3.viewmodel;
+package com.mobile2.p3210_a3.viewmodel;
 
 import android.util.Log;
 import android.view.View;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.p3210_a3.ItemClickListener;
-import com.example.p3210_a3.R;
+import com.mobile2.p3210_a3.ItemClickListener;
+import com.mobile2.p3210_a3.R;
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
 

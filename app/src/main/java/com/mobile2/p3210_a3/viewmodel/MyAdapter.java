@@ -4,7 +4,7 @@ Assignment 2
  */
 // Note for myself:  alt + insert to easily add constructor, getters, setters, etc
 
-package com.example.p3210_a3.viewmodel;
+package com.mobile2.p3210_a3.viewmodel;
 
 import android.content.Context;
 import android.util.Log;
@@ -16,9 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.p3210_a3.ItemClickListener;
-import com.example.p3210_a3.R;
-import com.example.p3210_a3.model.MovieModel;
+import com.mobile2.p3210_a3.ItemClickListener;
+import com.mobile2.p3210_a3.R;
+import com.mobile2.p3210_a3.model.MovieModel;
 
 import java.util.ArrayList;
 import java.util.List;

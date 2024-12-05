@@ -1,4 +1,4 @@
-package com.example.p3210_a3.viewmodel;
+package com.mobile2.p3210_a3.viewmodel;
 
 import android.util.Log;
 
@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.p3210_a3.model.MovieModel;
-import com.example.p3210_a3.utils.ApiClient;
+import com.mobile2.p3210_a3.model.MovieModel;
+import com.mobile2.p3210_a3.utils.ApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;

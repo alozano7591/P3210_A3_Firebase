@@ -1,4 +1,4 @@
-package com.example.p3210_a3.view;
+package com.mobile2.p3210_a3.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.p3210_a3.R;
-import com.example.p3210_a3.utils.ApiClient;
+import com.mobile2.p3210_a3.R;
+import com.mobile2.p3210_a3.utils.ApiClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;

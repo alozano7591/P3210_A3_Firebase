@@ -1,4 +1,4 @@
-package com.example.p3210_a3;
+package com.mobile2.p3210_a3;
 
 import org.junit.Test;
 
