@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -7,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.mobile2.p3210_a2"
+        applicationId = "com.mobile2.p3210_a3"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -44,6 +46,8 @@ dependencies {
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
+
+    implementation("com.google.firebase:firebase-analytics")
 
    // implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation(libs.okhttp)
