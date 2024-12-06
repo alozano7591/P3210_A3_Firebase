@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.mobile2.p3210_a3.ItemClickListener;
 import com.mobile2.p3210_a3.R;
 import com.mobile2.p3210_a3.model.FavMovieModel;
-import com.mobile2.p3210_a3.model.MovieModel;
 
 import java.util.List;
 
