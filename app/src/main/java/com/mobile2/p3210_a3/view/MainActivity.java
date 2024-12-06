@@ -7,12 +7,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+// FRAGMENT STUFF
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+// FRAGMENT STUFF
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobile2.p3210_a3.ItemClickListener;
+import com.mobile2.p3210_a3.R; // ALSO PART OF FRAGMENT TESTING
 import com.mobile2.p3210_a3.viewmodel.MyAdapter;
 import com.mobile2.p3210_a3.databinding.ActivityMainBinding;
 import com.mobile2.p3210_a3.model.MovieModel;
@@ -80,7 +86,34 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
             }
         });
 
+
+        // FRAGMENT EXPERIMENTATION ZONE \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+        replaceFragment(new SearchMovies());
+
+        binding.bottomNavBar.setOnItemSelectedListener(item -> {
+
+            switch(item.getItemId()) {
+
+                case(R.id.navItem_Search):
+                    replaceFragment(new SearchMovies());
+                    break;
+
+                case(R.id.navItem_Favourites):
+                    replaceFragment(new FavouriteMovies());
+                    break;
+            }
+            return true;
+        });
     }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.testLayout, fragment);
+        ft.commit();
+    }
+
+    // FRAGMENT EXPERIMENTATION ZONE /\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\
 
     public void logout(){
         mAuth.signOut();
