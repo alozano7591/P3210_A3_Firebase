@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
     tools:context=".view.SearchMovies">
 
     <TextView
@@ -13,7 +14,7 @@
         android:gravity="center"
         android:paddingVertical="10dp"
         android:text="Search Movies"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="@color/white"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

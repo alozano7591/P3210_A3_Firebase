@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.mobile2.p3210_a3.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FavouriteMovies#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FavouriteMovies extends Fragment {
 
     @Override

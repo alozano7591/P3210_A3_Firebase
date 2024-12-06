@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-// FRAGMENT STUFF
+// FRAGMENT STUFF \/
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-// FRAGMENT STUFF
+// FRAGMENT STUFF /\
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,9 +28,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ItemClickListener {
 
-    ActivityMainBinding binding;
-    MyAdapter myAdapter;
-    SearchViewModel viewModel;
+    ActivityMainBinding binding;//
+    MyAdapter myAdapter;//
+    SearchViewModel viewModel;//
     FirebaseAuth mAuth;
 
     @Override
