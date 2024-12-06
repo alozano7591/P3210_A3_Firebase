@@ -88,8 +88,12 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
 
 
         // FRAGMENT EXPERIMENTATION ZONE \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+        // this line loads the search fragment when MainActivity is created
         replaceFragment(new SearchMovies());
 
+        // this is the listener for the Nav Bar. if an item is selected, it grabs the corresponding...
+        // ... ID, then uses that to load the appropriate fragment
         binding.bottomNavBar.setOnItemSelectedListener(item -> {
 
             switch(item.getItemId()) {
@@ -102,10 +106,12 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
                     replaceFragment(new FavouriteMovies());
                     break;
             }
-            return true;
+            return true; // shut up compiler
         });
     }
 
+    // this method actually handles loading the fragment, and takes in the fragment...
+    // ... to be loaded as an arg
     private void replaceFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
