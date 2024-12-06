@@ -7,12 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobile2.p3210_a3.R;
+import com.mobile2.p3210_a3.databinding.ActivityMovieDetailsBinding;
+import com.mobile2.p3210_a3.model.FavMovieModel;
 import com.mobile2.p3210_a3.utils.ApiClient;
 
 import org.json.JSONException;
@@ -26,14 +31,6 @@ import okhttp3.Response;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
-    TextView titleTV;
-    TextView yearTV;
-    TextView plotTV;
-    TextView genreTV;
-    TextView imdbRatingTV;
-    ImageView posterIV;
-    Button backButton;
-
     String movieId;
 
     String title;
@@ -43,6 +40,9 @@ public class MovieDetailsActivity extends AppCompatActivity {
     String posterURL;
     String imdbRating;
 
+    ActivityMovieDetailsBinding binding;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,26 +51,26 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_movie_details);
 
+        binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+            finish();
+        }
+
         Intent movieIntentObj = getIntent();
         movieId = movieIntentObj.getStringExtra("id");
         title = movieIntentObj.getStringExtra("title");
         year = movieIntentObj.getStringExtra("year");
         posterURL = movieIntentObj.getStringExtra("posterUrl");
-
-        titleTV = findViewById(R.id.movieTitleTV);
-        posterIV = findViewById(R.id.imageViewPoster);
-        yearTV = findViewById(R.id.textViewYear);
-        plotTV = findViewById(R.id.textViewPlot);
-        genreTV = findViewById(R.id.textViewGenre);
-        imdbRatingTV = findViewById(R.id.textViewIMDbRating);
-
-        titleTV.setText(title);
-
-        backButton = findViewById(R.id.backButton);
+        binding.movieTitleTV.setText(title);
 
         fetchMoviesDetailsById(movieId);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GoBackToMain();
@@ -127,16 +127,31 @@ public class MovieDetailsActivity extends AppCompatActivity {
     }
 
     public void updateUI(){
-        titleTV.setText(title);
-        yearTV.setText(year);
-        plotTV.setText(plot);
-        genreTV.setText(genre);
-        imdbRatingTV.setText("IMBd: " + imdbRating);
+        binding.movieTitleTV.setText(title);
+        binding.textViewYear.setText(year);
+        binding.textViewPlot.setText(plot);
+        binding.textViewGenre.setText(genre);
+        binding.textViewIMDbRating.setText("IMBd: " + imdbRating);
+
+        ImageView posterIV = binding.imageViewPoster;
 
         Glide.with(posterIV.getContext())
                 .load(posterURL)
                 .placeholder(R.drawable.theatre447)
                 .into(posterIV);
+    }
+
+    private void saveToFireStoreFavourites(FavMovieModel movie, FirebaseFirestore db){
+        String userId = mAuth.getCurrentUser().getUid();
+
+        db.collection("userMovieFavourites").document(userId).collection("movies")
+                .add(movie)
+                .addOnSuccessListener(documentReference ->
+                        Toast.makeText(MovieDetailsActivity.this, "Movie added to favourites!", Toast.LENGTH_SHORT).show()
+                )
+                .addOnFailureListener(e ->
+                        Toast.makeText(MovieDetailsActivity.this, "Failed to add movie: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
     }
 
     public void GoBackToMain(){
