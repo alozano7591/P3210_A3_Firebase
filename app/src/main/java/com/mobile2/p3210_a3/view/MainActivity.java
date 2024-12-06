@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobile2.p3210_a3.ItemClickListener;
 import com.mobile2.p3210_a3.viewmodel.MyAdapter;
 import com.mobile2.p3210_a3.databinding.ActivityMainBinding;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
     ActivityMainBinding binding;
     MyAdapter myAdapter;
     SearchViewModel viewModel;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,17 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Establish firebase auth variable and check if user logged in
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+            finish();
+        }
+
+        // initialize db. Might not be a good spot to have it
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         viewModel = new ViewModelProvider(this).get(SearchViewModel.class);
 
@@ -59,6 +73,22 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
             }
         });
 
+        binding.logoutButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+    }
+
+    public void logout(){
+        mAuth.signOut();
+        Toast.makeText(this, "Logged out successfully.", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
