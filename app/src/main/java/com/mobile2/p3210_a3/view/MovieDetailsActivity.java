@@ -70,10 +70,20 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         fetchMoviesDetailsById(movieId);
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GoBackToMain();
+            }
+        });
+
+        binding.addToFavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FavMovieModel movie = new FavMovieModel(movieId, posterURL, title, genre, year, imdbRating);
+                saveToFireStoreFavourites(movie, db);
             }
         });
 
