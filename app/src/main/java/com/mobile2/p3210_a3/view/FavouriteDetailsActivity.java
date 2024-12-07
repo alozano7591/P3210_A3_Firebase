@@ -119,6 +119,7 @@ public class FavouriteDetailsActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         Log.i("tag", "Plot edited successfully.");
                         Toast.makeText(FavouriteDetailsActivity.this, "Plot edited successfully.", Toast.LENGTH_SHORT).show();
+                        GoBackToMain();
                         // goBackToFavouritesList();
                     }
                 })
@@ -142,6 +143,7 @@ public class FavouriteDetailsActivity extends AppCompatActivity {
                       public void onSuccess(Void unused) {
                           Log.w("tag", "Deletion Successful.");
                           Toast.makeText(FavouriteDetailsActivity.this, "Movie deleted successfully.", Toast.LENGTH_SHORT).show();
+                          GoBackToMain();
                           // goBackToFavouritesList();
                       }
                   })
