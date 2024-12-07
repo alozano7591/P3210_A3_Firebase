@@ -33,6 +33,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Enter Password..."
+            android:inputType="textPassword"
             android:text=""
             android:textColor="@color/black"
             android:textColorHint="#D3D3D3"
