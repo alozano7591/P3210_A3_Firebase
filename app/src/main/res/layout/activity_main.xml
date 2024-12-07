@@ -8,6 +8,18 @@
     android:background="@color/black"
     tools:context=".view.MainActivity">
 
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutTop"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayoutTop"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutTop" />
+
     <LinearLayout
         android:id="@+id/linearLayoutTop"
         android:layout_width="0dp"
@@ -23,31 +35,21 @@
             android:id="@+id/linearLayoutTitleBar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            >
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/textViewSearchPageTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingVertical="8dp"
-            android:text="Epic Movie App"
-            android:textColor="@color/white"
-            android:textSize="24dp"
-             />
-
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:text="Logout" />
+            <TextView
+                android:id="@+id/textViewSearchPageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingVertical="8dp"
+                android:text="Epic Movie App"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
 
         </LinearLayout>
 

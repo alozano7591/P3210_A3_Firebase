@@ -48,7 +48,7 @@ public class Register extends AppCompatActivity {
                 String emailEntered = binding.emailEditText.getText().toString().trim();
                 String passwordEntered = binding.passwordEditText.getText().toString().trim();
 
-                // Adding this check because I kept getting crashed when entering nothing for sign in
+                // Adding this check because I kept getting crashes when entering nothing for sign in
                 if(emailEntered.isEmpty() || passwordEntered.isEmpty()) {
                     if(emailEntered.isEmpty()){
                         binding.emailEditText.setError("Email required!");
@@ -61,6 +61,13 @@ public class Register extends AppCompatActivity {
                 }
 
                 registerUser(emailEntered, passwordEntered);
+            }
+        });
+
+        binding.cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoBackToLogin();
             }
         });
 
@@ -80,7 +87,6 @@ public class Register extends AppCompatActivity {
                             Intent intentObj = new Intent(getApplicationContext(), Login.class);
                             startActivity(intentObj);
                             finish();
-                            //updateUI(user);
                         } else{
                             String errorMessage = "";
                             if (task.getException() != null) {
@@ -88,9 +94,12 @@ public class Register extends AppCompatActivity {
                             }
 
                             Toast.makeText(Register.this, "Failed." + errorMessage, Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
                     }
                 });
+    }
+
+    public void GoBackToLogin(){
+        startActivity(new Intent(this, Login.class));
     }
 }
