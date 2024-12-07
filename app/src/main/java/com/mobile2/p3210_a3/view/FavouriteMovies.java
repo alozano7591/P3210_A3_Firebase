@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ public class FavouriteMovies extends Fragment implements ItemClickListener {
 
     FragmentFavouriteMoviesBinding binding;
     FavouriteViewModel viewModel;
-    FavouriteAdapter adapter;
+    FavouriteAdapter favAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,23 +35,33 @@ public class FavouriteMovies extends Fragment implements ItemClickListener {
         View view = binding.getRoot();
 
         viewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+
+        favAdapter = new FavouriteAdapter(this.getContext(), new ArrayList<>());
+        favAdapter.setClickListener(this);
+
+        binding.recyclerViewFavouritesList.setLayoutManager(layoutManager);
+        binding.recyclerViewFavouritesList.setAdapter(favAdapter);
+
         viewModel.getFavList().observe(getViewLifecycleOwner(), favMovieModels -> {
 
-            // VERY unsure about the binding.getRoot().getContext() bit here
-            adapter = new FavouriteAdapter(binding.getRoot().getContext(), new ArrayList<>());
-            adapter.setClickListener(this);
-
+            viewModel.getFavouritesFromDb();
+            
         });
+
+
 
         return inflater.inflate(R.layout.fragment_favourite_movies, container, false);
     }
 
     @Override
     public void onClick(View v, int pos){
-        goToFavouriteDetails(adapter.getFavourites().get(pos));
+        goToFavouriteDetails(favAdapter.getFavourites().get(pos));
     }
 
     public void goToFavouriteDetails(FavMovieModel favModel){
+                                            // UNSURE ABOUT THIS \/
         Intent goToFavouriteDetailsIntent = new Intent(this.getContext(), FavouriteDetailsActivity.class);
         goToFavouriteDetailsIntent.putExtra("id", favModel.getImdbID());
         goToFavouriteDetailsIntent.putExtra("poster", favModel.getPosterUrl());
