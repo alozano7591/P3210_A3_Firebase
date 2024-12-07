@@ -35,10 +35,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     String title;
     String year;
-    String plot;
     String genre;
     String posterURL;
     String imdbRating;
+    String plot;
 
     ActivityMovieDetailsBinding binding;
     FirebaseAuth mAuth;
@@ -82,7 +82,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         binding.addToFavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FavMovieModel movie = new FavMovieModel(movieId, posterURL, title, genre, year, imdbRating);
+                FavMovieModel movie = new FavMovieModel(movieId, posterURL, title, genre, year, imdbRating, plot);
                 saveToFireStoreFavourites(movie, db);
             }
         });
