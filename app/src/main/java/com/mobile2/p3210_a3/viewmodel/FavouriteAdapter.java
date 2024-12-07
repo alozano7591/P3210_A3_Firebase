@@ -44,9 +44,9 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteViewHolder> 
         FavMovieModel favModel = favMovieModels.get(position);
 
         Glide.with(holder.posterImageView.getContext())
-                .load(favModel.getPosterUrl())
-                .placeholder(R.drawable.theatre447)         // no reason to drop the default image :)
-                .into(holder.posterImageView);
+            .load(favModel.getPosterUrl())
+            .placeholder(R.drawable.theatre447)         // no reason to drop the default image :)
+            .into(holder.posterImageView);
 
         holder.title.setText(favModel.getTitle());
         holder.year.setText(favModel.getYear());

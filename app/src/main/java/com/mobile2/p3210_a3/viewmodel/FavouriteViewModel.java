@@ -11,13 +11,18 @@ import androidx.lifecycle.ViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile2.p3210_a3.model.FavMovieModel;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FavouriteViewModel extends ViewModel  {
 
@@ -45,9 +50,12 @@ public class FavouriteViewModel extends ViewModel  {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            List<FavMovieModel> newFavList = new ArrayList<FavMovieModel>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("tag", document.getId() + " => " + document.getId());
+                                Log.d("tag", "document ID: " + document.getId() + " => document data: " + document.getData());
+                                newFavList.add(convertData(document.getData()));
                             }
+                            favList.postValue(newFavList);
                         }
                         else {
                             Log.w("tag", "Error getting documents.", task.getException());
@@ -57,4 +65,18 @@ public class FavouriteViewModel extends ViewModel  {
     }
 
     // method to turn json data into something consumable by the view
+    private FavMovieModel convertData(Map<String, Object> data){
+        Log.i("tag", "convertData called");
+        JSONObject convertedData = new JSONObject(data);
+        Log.i("tag", convertedData.toString());
+
+        String posterUrl = convertedData.optString("posterUrl", "no poster URL");
+        //String plot = convertedData.optString("plot", "no plot"); //oopsies!
+        String year = convertedData.optString("year", "no year");
+        String imdbID = convertedData.optString("imdbID", "no imdbID");
+        String title = convertedData.optString("title", "no title");
+
+        return new FavMovieModel(posterUrl, year, imdbID, title);
+    }
+
 }

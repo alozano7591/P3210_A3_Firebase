@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,15 +45,15 @@ public class FavouriteMovies extends Fragment implements ItemClickListener {
         binding.recyclerViewFavouritesList.setLayoutManager(layoutManager);
         binding.recyclerViewFavouritesList.setAdapter(favAdapter);
 
+        viewModel.getFavouritesFromDb();
+
         viewModel.getFavList().observe(getViewLifecycleOwner(), favMovieModels -> {
 
-            viewModel.getFavouritesFromDb();
-            
+            favAdapter.updateFavourites(favMovieModels);
+
         });
 
-
-
-        return inflater.inflate(R.layout.fragment_favourite_movies, container, false);
+        return view;
     }
 
     @Override

@@ -15,6 +15,14 @@ public class FavMovieModel {
 
     }
 
+    // listing all favourites uses this constructor
+    public FavMovieModel(String posterUrl, String year, String imdbID, String title){
+        this.posterUrl = posterUrl;
+        this.year = year;
+        this.imdbID = imdbID;
+        this.title = title;
+    }
+
     public FavMovieModel(String imdbID, String posterUrl, String title, String genre,
                          String year, String imdbRating, String plot) {
         this.imdbID = imdbID;
