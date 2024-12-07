@@ -23,7 +23,7 @@ public class FavouriteViewHolder extends RecyclerView.ViewHolder {
     public FavouriteViewHolder(@NonNull View itemView, ItemClickListener clickListener){
         super(itemView);
 
-        posterImageView = itemView.findViewById(R.id.imageViewPoster);
+        posterImageView = itemView.findViewById(R.id.imageviewPoster);
         title = itemView.findViewById(R.id.title_txt);
         year = itemView.findViewById(R.id.year_text);
 

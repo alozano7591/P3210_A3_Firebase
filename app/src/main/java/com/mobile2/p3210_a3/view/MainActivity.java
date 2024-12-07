@@ -86,9 +86,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
             }
         });
 
-
-        // FRAGMENT EXPERIMENTATION ZONE \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
         // this line loads the search fragment when MainActivity is created
         replaceFragment(new SearchMovies());
 
@@ -118,8 +115,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         ft.replace(R.id.testLayout, fragment);
         ft.commit();
     }
-
-    // FRAGMENT EXPERIMENTATION ZONE /\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\
 
     public void logout(){
         mAuth.signOut();
