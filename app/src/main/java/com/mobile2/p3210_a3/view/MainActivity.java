@@ -54,12 +54,13 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         viewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        myAdapter = new MyAdapter(this, new ArrayList<>());
-        myAdapter.setClickListener(this);
+        //myAdapter = new MyAdapter(this, new ArrayList<>());
+        //myAdapter.setClickListener(this);
 
-        binding.recyclerView.setLayoutManager(layoutManager);
-        binding.recyclerView.setAdapter(myAdapter);
+        //binding.recyclerView.setLayoutManager(layoutManager);
+        //binding.recyclerView.setAdapter(myAdapter);
 
+        /*
         viewModel.getMovieList().observe(this, movieList -> {
             Log.i("tag", "Update View");
             myAdapter.updateMovies(movieList);
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
                 Toast.makeText(this, "Please enter a movie title", Toast.LENGTH_SHORT).show();
             }
         });
+         */
 
         binding.logoutButton.setOnClickListener(new View.OnClickListener(){
             @Override
