@@ -69,6 +69,15 @@ public class FavouriteDetailsActivity extends AppCompatActivity {
 
         updateUI();
 
+        // NEW ADDITION
+        binding.updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateMoviePlot(binding.plotTV.getText().toString());
+            }
+        });
+        // NEW ADDITION
+
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +105,30 @@ public class FavouriteDetailsActivity extends AppCompatActivity {
                 .into(posterIV);
     }
 
+    // NEW ADDITION
+    public void updateMoviePlot(String newPlot){
+        String userId = mAuth.getCurrentUser().getUid();
+
+        db.collection("userMovieFavourites")
+                .document(userId)
+                .collection("movies")
+                .document(docId)
+                .update("plot", newPlot)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.i("tag", "Plot edited successfully.");
+                        Toast.makeText(FavouriteDetailsActivity.this, "Plot edited successfully.", Toast.LENGTH_SHORT).show();
+                        // goBackToFavouritesList();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.i("tag", "Error editing plot.", e);
+                    Toast.makeText(FavouriteDetailsActivity.this, "Error editing plot.", Toast.LENGTH_SHORT).show();
+                });
+    }
+    // NEW ADDITION
+
     public void deleteMovieFromDb(){
         String userId = mAuth.getCurrentUser().getUid();
 
@@ -109,6 +142,7 @@ public class FavouriteDetailsActivity extends AppCompatActivity {
                       public void onSuccess(Void unused) {
                           Log.w("tag", "Deletion Successful.");
                           Toast.makeText(FavouriteDetailsActivity.this, "Movie deleted successfully.", Toast.LENGTH_SHORT).show();
+                          // goBackToFavouritesList();
                       }
                   })
                 .addOnFailureListener(e -> {
@@ -119,5 +153,9 @@ public class FavouriteDetailsActivity extends AppCompatActivity {
 
     public void GoBackToMain(){
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void goBackToFavouritesList() {
+        // figure out how to navigate to favourites fragment when loading mainactivity
     }
 }
