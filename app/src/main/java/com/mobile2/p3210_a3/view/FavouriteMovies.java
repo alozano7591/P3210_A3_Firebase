@@ -36,7 +36,6 @@ public class FavouriteMovies extends Fragment implements ItemClickListener {
         View view = binding.getRoot();
 
         viewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
 
         favAdapter = new FavouriteAdapter(this.getContext(), new ArrayList<>());

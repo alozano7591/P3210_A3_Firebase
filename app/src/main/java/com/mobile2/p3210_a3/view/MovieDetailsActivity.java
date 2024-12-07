@@ -82,7 +82,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         binding.addToFavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FavMovieModel movie = new FavMovieModel(movieId, posterURL, title, genre, year, imdbRating, plot);
+                FavMovieModel movie = new FavMovieModel(movieId, posterURL, title, year, plot);
                 saveToFireStoreFavourites(movie, db);
             }
         });

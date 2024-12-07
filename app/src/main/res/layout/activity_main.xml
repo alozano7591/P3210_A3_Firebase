@@ -9,7 +9,7 @@
     tools:context=".view.MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayoutTop"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -19,18 +19,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewSearchPageTitle"
+        <LinearLayout
+            android:id="@+id/linearLayoutTitleBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:paddingVertical="10dp"
-            android:text="Epic Movie Search"
-            android:textColor="@color/white"
-            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            >
+
+        <TextView
+            android:id="@+id/textViewSearchPageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingVertical="8dp"
+            android:text="Epic Movie App"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+             />
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:text="Logout" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="320dp"
@@ -38,87 +57,22 @@
             android:layout_gravity="center"
             android:background="@color/white" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/searchEditText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="Enter Movie..."
-                android:text=""
-                android:textColor="@color/white"
-                android:textColorHint="#D3D3D3"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/searchButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Search" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/searchTabButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:text="Search" />
-
-            <Button
-                android:id="@+id/favsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:text="Favourites" />
-
-            <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:text="Logout" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="410dp"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/testLayout"
         android:layout_width="413dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="79dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTop">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
         android:layout_width="411dp"
-        android:layout_height="78dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
