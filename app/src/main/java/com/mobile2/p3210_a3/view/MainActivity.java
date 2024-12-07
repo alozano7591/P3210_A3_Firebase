@@ -54,32 +54,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         viewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        //myAdapter = new MyAdapter(this, new ArrayList<>());
-        //myAdapter.setClickListener(this);
-
-        //binding.recyclerView.setLayoutManager(layoutManager);
-        //binding.recyclerView.setAdapter(myAdapter);
-
-        /*
-        viewModel.getMovieList().observe(this, movieList -> {
-            Log.i("tag", "Update View");
-            myAdapter.updateMovies(movieList);
-
-            if(movieList.size() == 0 || movieList.isEmpty()){
-                Toast.makeText(this, "No movies found.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        binding.searchButton.setOnClickListener(v -> {
-            String title = binding.searchEditText.getText().toString().trim();
-            if (!title.isEmpty()) {
-                viewModel.fetchMoviesByTitle(title);
-            } else {
-                Toast.makeText(this, "Please enter a movie title", Toast.LENGTH_SHORT).show();
-            }
-        });
-         */
-
         binding.logoutButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

@@ -6,7 +6,7 @@ public class FavMovieModel {
     String imdbID;
     String posterUrl;
     String title;
-    String year;    
+    String year;
     String plot;
 
     public FavMovieModel(){
