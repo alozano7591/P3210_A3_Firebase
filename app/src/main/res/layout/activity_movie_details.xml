@@ -8,108 +8,117 @@
     android:background="@color/black"
     tools:context=".view.MovieDetailsActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageViewPoster"
-            android:layout_width="match_parent"
-            android:layout_height="440dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/theatre447"
-            />
-
-
-        <TextView
-            android:id="@+id/movieTitleTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
-            android:layout_weight="1"
-            android:ellipsize="none"
-            android:maxLines="3"
-            android:scrollHorizontally="false"
-            android:text="Title: I was having issues with super long titles so I decided to put this here to test wrapping..."
-            android:textColor="@color/white"
-            android:textSize="30dp" />
-
-        <TextView
-            android:id="@+id/textViewIMDbRating"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Rating"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewYear"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Year"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewGenre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Genre"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewPlot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Plot"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/movieDetailScroll"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_height="match_parent"
         >
 
-        <Button
-            android:id="@+id/addToFavButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Add to Favourites"
-            android:layout_marginHorizontal="10dp"
-            />
+            android:layout_margin="20dp"
+            android:gravity="start"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Back"
-            android:layout_marginHorizontal="10dp"
-            />
+            <ImageView
+                android:id="@+id/imageViewPoster"
+                android:layout_width="match_parent"
+                android:layout_height="440dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/theatre447"
+                />
 
-    </LinearLayout>
+
+            <TextView
+                android:id="@+id/movieTitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:maxLines="3"
+                android:scrollHorizontally="false"
+                android:text="Title: I was having issues with super long titles so I decided to put this here to test wrapping..."
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/textViewIMDbRating"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Rating"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewYear"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Year"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Genre"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewPlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Plot"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPlot"
+                >
+
+                <Button
+                    android:id="@+id/addToFavButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Add to Favourites"
+                    android:layout_marginHorizontal="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Back"
+                    android:layout_marginHorizontal="10dp"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
