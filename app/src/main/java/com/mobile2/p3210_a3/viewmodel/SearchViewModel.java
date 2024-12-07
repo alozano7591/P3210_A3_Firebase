@@ -37,7 +37,8 @@ public class SearchViewModel extends ViewModel {
     public void fetchMoviesByTitle(String title){
 
         Log.i("tag", "enter fetchMoviesByTitle search " + title);
-        String baseUrl = "https://www.omdbapi.com/?apikey=865e2af0&s=";
+        //String baseUrl = "https://www.omdbapi.com/?apikey=865e2af0&s=";
+        String baseUrl = "https://www.omdbapi.com/?apikey=865e2af0&type=movie&s=";
         String getUrl = baseUrl + title;
 
         ApiClient.get(getUrl, new Callback() {
