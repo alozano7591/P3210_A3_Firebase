@@ -6,9 +6,7 @@ public class FavMovieModel {
     String imdbID;
     String posterUrl;
     String title;
-    String genre;
-    String year;
-    String imdbRating;
+    String year;    
     String plot;
 
     public FavMovieModel(){
@@ -23,14 +21,12 @@ public class FavMovieModel {
         this.title = title;
     }
 
-    public FavMovieModel(String imdbID, String posterUrl, String title, String genre,
-                         String year, String imdbRating, String plot) {
+    public FavMovieModel(String imdbID, String posterUrl, String title,
+                         String year, String plot) {
         this.imdbID = imdbID;
         this.posterUrl = posterUrl;
         this.title = title;
-        this.genre = genre;
         this.year = year;
-        this.imdbRating = imdbRating;
         this.plot = plot;
     }
 
@@ -54,28 +50,12 @@ public class FavMovieModel {
         this.title = title;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public String getYear() {
         return year;
     }
 
     public void setYear(String year) {
         this.year = year;
-    }
-
-    public String getImdbRating() {
-        return imdbRating;
-    }
-
-    public void setImdbRating(String imdbRating) {
-        this.imdbRating = imdbRating;
     }
 
     public String getPlot() {
