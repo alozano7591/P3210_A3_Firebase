@@ -3,6 +3,7 @@ package com.mobile2.p3210_a3.model;
 public class FavMovieModel {
 
     // reusing everything for now, need to figure out what to actually keep
+    String docID;
     String imdbID;
     String posterUrl;
     String title;
@@ -13,21 +14,32 @@ public class FavMovieModel {
 
     }
 
-    // listing all favourites uses this constructor
-    public FavMovieModel(String posterUrl, String year, String imdbID, String title){
+    // used when adding a favourite to FireStore db
+    public FavMovieModel(String imdbID, String posterUrl, String title, String year, String plot){
         this.posterUrl = posterUrl;
         this.year = year;
         this.imdbID = imdbID;
         this.title = title;
+        this.plot = plot;
     }
 
-    public FavMovieModel(String imdbID, String posterUrl, String title,
+    // used when getting a favourite FROM FireStore db and adding to list. Firestore docID is VERY important
+    public FavMovieModel(String docID, String imdbID, String posterUrl, String title,
                          String year, String plot) {
+        this.docID = docID;
         this.imdbID = imdbID;
         this.posterUrl = posterUrl;
         this.title = title;
         this.year = year;
         this.plot = plot;
+    }
+
+    public String getDocID() {
+        return docID;
+    }
+
+    public void setDocID(String docID) {
+        this.docID = docID;
     }
 
     public String getImdbID() {

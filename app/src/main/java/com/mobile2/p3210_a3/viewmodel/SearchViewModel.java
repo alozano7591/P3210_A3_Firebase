@@ -95,6 +95,9 @@ public class SearchViewModel extends ViewModel {
 
             Log.i("tag", "parseData finished");
         }
+        else{
+            Log.i("tag", "No movies found");
+        }
     }
 
 }

@@ -62,12 +62,17 @@ public class FavouriteMovies extends Fragment implements ItemClickListener {
 
     public void goToFavouriteDetails(FavMovieModel favModel){
                                             // UNSURE ABOUT THIS \/
+
         Intent goToFavouriteDetailsIntent = new Intent(this.getContext(), FavouriteDetailsActivity.class);
-        goToFavouriteDetailsIntent.putExtra("id", favModel.getImdbID());
+        goToFavouriteDetailsIntent.putExtra("docID", favModel.getDocID());
+        goToFavouriteDetailsIntent.putExtra("imdbID", favModel.getImdbID());
         goToFavouriteDetailsIntent.putExtra("poster", favModel.getPosterUrl());
         goToFavouriteDetailsIntent.putExtra("title", favModel.getTitle());
-        goToFavouriteDetailsIntent.putExtra("year", favModel.getYear());
+        goToFavouriteDetailsIntent.putExtra("plot", favModel.getPlot());
 
         startActivity(goToFavouriteDetailsIntent);
+
+
     }
+
 }

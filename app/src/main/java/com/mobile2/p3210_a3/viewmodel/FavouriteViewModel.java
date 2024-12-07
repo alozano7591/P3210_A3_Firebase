@@ -53,7 +53,7 @@ public class FavouriteViewModel extends ViewModel  {
                             List<FavMovieModel> newFavList = new ArrayList<FavMovieModel>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("tag", "document ID: " + document.getId() + " => document data: " + document.getData());
-                                newFavList.add(convertData(document.getData()));
+                                newFavList.add(convertData(document.getId(), document.getData()));
                             }
                             favList.postValue(newFavList);
                         }
@@ -65,18 +65,22 @@ public class FavouriteViewModel extends ViewModel  {
     }
 
     // method to turn json data into something consumable by the view
-    private FavMovieModel convertData(Map<String, Object> data){
+    private FavMovieModel convertData(String docID, Map<String, Object> data){
         Log.i("tag", "convertData called");
         JSONObject convertedData = new JSONObject(data);
         Log.i("tag", convertedData.toString());
 
         String posterUrl = convertedData.optString("posterUrl", "no poster URL");
-        //String plot = convertedData.optString("plot", "no plot"); //oopsies!
+        String plot = convertedData.optString("plot", "no plot"); //oopsies!
         String year = convertedData.optString("year", "no year");
         String imdbID = convertedData.optString("imdbID", "no imdbID");
         String title = convertedData.optString("title", "no title");
 
-        return new FavMovieModel(posterUrl, year, imdbID, title);
+        //return new FavMovieModel(posterUrl, year, imdbID, title);
+
+        // Updated to include plot so that we can see the plot when going to the fav movie details
+        //Document ID is the unique Firestore id used for the specific movie. Turns out we need this for proper CRUD
+        return new FavMovieModel(docID, imdbID, posterUrl, title, year, plot);
     }
 
 }
