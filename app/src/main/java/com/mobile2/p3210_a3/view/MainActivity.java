@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         viewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
         myAdapter = new MyAdapter(this, new ArrayList<>());
